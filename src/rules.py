@@ -1,5 +1,3 @@
-# rules.py
-
 def fuzzy_rule_and(mf1, mf2):
     """
     Regra fuzzy que utiliza a operação "E" (t-norma mínima) feita manualmente.

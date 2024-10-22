@@ -1,40 +1,8 @@
-# main.py
 import numpy as np
 import matplotlib.pyplot as plt
-from fuzzy import triangular_mf, trapezoidal_mf
+from fuzzy import triangular_mf, trapezoidal_mf, fuzzify_data
 from rules import fuzzy_rule_and, fuzzy_rule_or
-
-
-def fuzzify_data(X, a, b, c):
-    """
-    Função para fuzzificar um conjunto de dados de entrada usando uma função de pertinência triangular.
-    X: Matriz de dados de entrada (M x N)
-    a, b, c: Parâmetros da função triangular
-    Retorna uma matriz de graus de pertinência.
-    """
-    M, N = X.shape
-    Mi = np.zeros((M, N))  # Matriz para armazenar os graus de pertinência
-    for i in range(M):
-        for j in range(N):
-            Mi[i][j] = triangular_mf(X[i][j], a, b, c)
-    return Mi
-
-
-def plot_fuzzification(X, Mi):
-    """
-    Função para plotar os resultados da fuzzificação.
-    X: Matriz de entrada original.
-    Mi: Matriz de graus de pertinência (fuzzificada).
-    """
-    for i in range(len(X)):
-        plt.plot(X[i], Mi[i], label=f'Conjunto {i+1}')
-    
-    plt.title('Fuzzificação dos Conjuntos de Dados')
-    plt.xlabel('Valores de Entrada')
-    plt.ylabel('Grau de Pertinência')
-    plt.legend()
-    plt.show()
-
+from utils import plot_fuzzification
 
 if __name__ == "__main__":
     # Exemplo de dados de entrada (M x N)
