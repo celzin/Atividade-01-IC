@@ -28,3 +28,20 @@ def plot_fuzzification(X, Mi, function_name):
     plt.ylabel('Grau de Pertinência')
     plt.legend()
     plt.show()
+
+
+def plot_fuzzification_overlay(X, Mis, function_name):
+    """
+    Função para plotar os resultados da fuzzificação com sobreposição de funções.
+    X: Matriz de entrada original.
+    Mis: Lista de matrizes de graus de pertinência (fuzzificadas).
+    function_name: Nome da função de pertinência sendo plotada.
+    """
+    for i, Mi in enumerate(Mis):
+        plt.plot(X[0], Mi[0], label=f'Conjunto {i+1}')
+    
+    plt.title(f'Fuzzificação dos Conjuntos - Sobreposição ({function_name})')
+    plt.xlabel('Valores de Entrada')
+    plt.ylabel('Grau de Pertinência')
+    plt.legend()
+    plt.show()
