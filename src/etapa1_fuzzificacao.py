@@ -4,7 +4,7 @@ from fuzzy import (fuzzify_triangular, fuzzify_trapezoidal, fuzzify_gaussian, fu
                    fuzzify_double_gaussian, fuzzify_linear_piecewise, fuzzify_polynomial)
 from utils import plot_fuzzification
 
-if __name__ == "__main__":
+def executar_etapa1():
     # Definir o domínio (universo de discurso)
     dominio = np.linspace(0, 100, 100)  # 100 pontos no intervalo de 0 a 100
 
