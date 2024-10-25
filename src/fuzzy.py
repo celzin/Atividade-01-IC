@@ -33,6 +33,113 @@ def trapezoidal_mf(x, a, b, c, d):
         return (d - x) / (d - c)
 
 
+def gaussian_mf(x, c, sigma):
+    """
+    Função de pertinência Gaussiana.
+    x: valor de entrada
+    c: valor central
+    sigma: desvio padrão
+    """
+    return np.exp(-0.5 * ((x - c) / sigma) ** 2)
+
+
+def sigmoidal_mf(x, alpha, c):
+    """
+    Função de pertinência Sigmoidal.
+    x: valor de entrada
+    alpha: inclinação da curva
+    c: ponto central
+    """
+    return 1 / (1 + np.exp(-alpha * (x - c)))
+
+
+def bell_mf(x, a, b, c):
+    """
+    Função de pertinência Sino.
+    a: largura da curva
+    b: inclinação
+    c: valor central
+    """
+    return 1 / (1 + abs((x - c) / a) ** (2 * b))
+
+
+def s_shaped_mf(x, a, b):
+    """
+    Função de pertinência em 'S' (S-shaped).
+    x: valor de entrada
+    a: limite inferior (Mi = 0)
+    b: limite superior (Mi = 1)
+    """
+    if x <= a:
+        return 0.0
+    elif a < x <= (a + b) / 2:
+        return 2 * ((x - a) / (b - a)) ** 2
+    elif (a + b) / 2 < x <= b:
+        return 1 - 2 * ((b - x) / (b - a)) ** 2
+    else:
+        return 1.0
+
+
+def z_shaped_mf(x, a, b):
+    """
+    Função de pertinência em 'Z' (Z-shaped).
+    x: valor de entrada
+    a: limite inferior (Mi = 1)
+    b: limite superior (Mi = 0)
+    """
+    if x <= a:
+        return 1.0
+    elif a < x <= (a + b) / 2:
+        return 1 - 2 * ((x - a) / (b - a)) ** 2
+    elif (a + b) / 2 < x <= b:
+        return 2 * ((b - x) / (b - a)) ** 2
+    else:
+        return 0.0
+
+
+def cauchy_mf(x, c, gamma):
+    """
+    Função de pertinência Cauchy.
+    x: valor de entrada
+    c: valor central
+    gamma: largura da curva
+    """
+    return 1 / (1 + ((x - c) / gamma) ** 2)
+
+
+def double_gaussian_mf(x, c1, sigma1, c2, sigma2):
+    """
+    Função de pertinência Gaussiana Dupla.
+    x: valor de entrada
+    c1, c2: valores centrais das gaussianas
+    sigma1, sigma2: desvios padrão das gaussianas
+    """
+    return np.exp(-0.5 * ((x - c1) / sigma1) ** 2) + np.exp(-0.5 * ((x - c2) / sigma2) ** 2)
+
+
+def linear_piecewise_mf(x, a, b):
+    """
+    Função Linear por Partes (Linear Piecewise).
+    a: limite inferior
+    b: limite superior
+    """
+    if x < a:
+        return 0.0
+    elif a <= x <= b:
+        return (x - a) / (b - a)
+    else:
+        return 1.0
+
+
+def polynomial_mf(x, c, n):
+    """
+    Função Polinomial.
+    c: valor central
+    n: expoente do polinômio
+    """
+    return 1 - (x - c) ** n
+
+
 def fuzzify_data(X, a, b, c):
     """
     Função para fuzzificar um conjunto de dados de entrada usando uma função de pertinência triangular.
