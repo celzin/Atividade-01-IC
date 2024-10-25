@@ -13,16 +13,17 @@ def normalize_data(X, min_val, max_val):
     return X_normalized
 
 
-def plot_fuzzification(X, Mi):
+def plot_fuzzification(X, Mi, function_name):
     """
     Função para plotar os resultados da fuzzificação.
     X: Matriz de entrada original.
     Mi: Matriz de graus de pertinência (fuzzificada).
+    function_name: Nome da função de pertinência sendo plotada.
     """
     for i in range(len(X)):
         plt.plot(X[i], Mi[i], label=f'Conjunto {i+1}')
     
-    plt.title('Fuzzificação dos Conjuntos de Dados')
+    plt.title(f'Fuzzificação dos Conjuntos de Dados - {function_name}')
     plt.xlabel('Valores de Entrada')
     plt.ylabel('Grau de Pertinência')
     plt.legend()
