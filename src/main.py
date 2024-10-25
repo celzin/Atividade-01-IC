@@ -54,7 +54,7 @@ if __name__ == "__main__":
     print("S-Shaped: Matriz de graus de pertinência:")
     for row in Mi_s_shaped:
         print([f"{value:.2f}" for value in row])
-    plot_fuzzification(X, Mi_s_shaped, "S-Shaped")
+    plot_fuzzification(X, Mi_s_shaped, "Tipo-S")
 
     # Testando a função Z-Shaped
     a, b = 0, 10  # Parâmetros da função Z-shaped
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     print("Z-Shaped: Matriz de graus de pertinência:")
     for row in Mi_z_shaped:
         print([f"{value:.2f}" for value in row])
-    plot_fuzzification(X, Mi_z_shaped, "Z-Shaped")
+    plot_fuzzification(X, Mi_z_shaped, "Tipo-Z")
 
     # Testando a função Cauchy
     c, gamma = 5, 2  # Parâmetros da função Cauchy
