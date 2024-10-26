@@ -45,3 +45,13 @@ def plot_fuzzification_overlay(X, Mis, function_name):
     plt.ylabel('Grau de Pertinência')
     plt.legend()
     plt.show()
+
+def plot_fuzzification_operations(X, Mis, function_name):
+    for i, Mi in enumerate(Mis):
+        plt.plot(X, Mi, label=f'Conjunto {i+1}')
+    
+    plt.title(f'Operações Fuzzy - {function_name} (Etapa 3)')
+    plt.xlabel('Valores de Entrada')
+    plt.ylabel('Grau de Pertinência')
+    plt.legend()
+    plt.show()
