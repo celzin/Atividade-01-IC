@@ -25,7 +25,7 @@ def executar_etapa3():
     Mi_intersection = fuzzy_intersection(Mi_triangular1[0], Mi_triangular2[0])
     plot_fuzzification_operations(dominio[0], [Mi_triangular1[0], Mi_triangular2[0], Mi_intersection], "Interseção")
 
-    # 4. Normas Duais (Produto e Probabilística)
+    # 4. Normas Duais (Produto Algébrico e Soma Probabilística)
     Mi_tnorm = fuzzy_tnorm_product(Mi_triangular1[0], Mi_triangular2[0])
     Mi_snorm = fuzzy_snorm_probabilistic(Mi_triangular1[0], Mi_triangular2[0])
     plot_fuzzification_operations(dominio[0], [Mi_triangular1[0], Mi_triangular2[0], Mi_tnorm], "T-Norm Produto")
