@@ -1,6 +1,6 @@
 import numpy as np
 from relations import fuzzy_relation_binaria, tnorm_diferenca_limitada, tnorm_min, s_norma_soma_probabilistica, s_norma_soma_limitada
-from utils import plot_comparison_membership
+from utils import plot_heatmap, plot_comparison_membership
 
 def executar_etapa4():
     # Definir o domínio das alturas e idades conforme o exemplo
@@ -20,30 +20,30 @@ def executar_etapa4():
 
     # 1. Relação fuzzy usando a t-norma de Diferença Limitada
     relation_binaria_diferenca = fuzzy_relation_binaria(tnorm_diferenca_limitada, altura_values, idade_values)
-    
-    # 2. Relação fuzzy usando a t-norma de Interseção Mínima
-    relation_binaria_min = fuzzy_relation_binaria(tnorm_min, altura_values, idade_values)
-
     print("Relação Binária Fuzzy (Diferença Limitada - T-norma):")
     for row in relation_binaria_diferenca:
-        print(row)
+        print([f"{value:.2f}" for value in row])
+    plot_heatmap(relation_binaria_diferenca, "Diferença Limitada - T-norma")
 
+    # 2. Relação fuzzy usando a t-norma de Interseção Mínima
+    relation_binaria_min = fuzzy_relation_binaria(tnorm_min, altura_values, idade_values)
     print("\nRelação Binária Fuzzy (Interseção Mínima - T-norma):")
     for row in relation_binaria_min:
-        print(row)
+        print([f"{value:.2f}" for value in row])
+    plot_heatmap(relation_binaria_min, "Interseção Mínima - T-norma")
 
     # Comparação entre S-Normas
 
     # 1. Relação fuzzy usando a s-norma de Soma Probabilística
     relation_binaria_soma_prob = fuzzy_relation_binaria(s_norma_soma_probabilistica, altura_values, idade_values)
-    
-    # 2. Relação fuzzy usando a s-norma de Soma Limitada
-    relation_binaria_soma_limitada = fuzzy_relation_binaria(s_norma_soma_limitada, altura_values, idade_values)
-
     print("\nRelação Binária Fuzzy (Soma Probabilística - S-norma):")
     for row in relation_binaria_soma_prob:
-        print(row)
+        print([f"{value:.2f}" for value in row])
+    plot_heatmap(relation_binaria_soma_prob, "Soma Probabilística - S-norma")
 
+    # 2. Relação fuzzy usando a s-norma de Soma Limitada
+    relation_binaria_soma_limitada = fuzzy_relation_binaria(s_norma_soma_limitada, altura_values, idade_values)
     print("\nRelação Binária Fuzzy (Soma Limitada - S-norma):")
     for row in relation_binaria_soma_limitada:
-        print(row)
+        print([f"{value:.2f}" for value in row])
+    plot_heatmap(relation_binaria_soma_limitada, "Soma Limitada - S-norma")

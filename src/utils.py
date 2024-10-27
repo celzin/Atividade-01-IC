@@ -1,4 +1,5 @@
 import numpy as np
+import seaborn as sns
 import matplotlib.pyplot as plt
 
 def normalize_data(X, min_val, max_val):
@@ -105,4 +106,18 @@ def plot_comparison_membership(dominio_altura, altura_values, dominio_idade, ida
     ax2.grid(True)
 
     plt.tight_layout()
+    plt.show()
+
+def plot_heatmap(matrix, title):
+    """
+    Plota um heatmap da matriz de relação fuzzy.
+    
+    matrix: Matriz de relação fuzzy.
+    title: Título do gráfico (indica o tipo de norma usada).
+    """
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(matrix, annot=True, cmap="YlGnBu", cbar=True)
+    plt.title(f"Heatmap da Relação Fuzzy - {title}")
+    plt.xlabel("Conjunto 1 (Altura)")
+    plt.ylabel("Conjunto 2 (Idade)")
     plt.show()
