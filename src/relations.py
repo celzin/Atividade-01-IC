@@ -1,8 +1,8 @@
-def fuzzy_relation_binaria(tnorm, set_a, set_b):
+def fuzzy_relation_binaria(op_norma, set_a, set_b):
     """
-    Calcula uma relação binária fuzzy entre dois conjuntos fuzzy usando uma t-norma.
+    Calcula uma relação binária fuzzy entre dois conjuntos fuzzy usando uma t-norma ou s-norma.
     
-    tnorm: Função de t-norma (ex: diferença limitada, mínimo).
+    op_norma: Função de t-norma ou s-norma.
     set_a: Lista de graus de pertinência do conjunto A.
     set_b: Lista de graus de pertinência do conjunto B.
     
@@ -17,8 +17,8 @@ def fuzzy_relation_binaria(tnorm, set_a, set_b):
     for i in range(len(set_a)):
         row = []
         for j in range(len(set_b)):
-            # Aplicar a t-norma para calcular o grau de relação entre os elementos
-            relation_value = tnorm(set_a[i], set_b[j])
+            # Aplicar a norma para calcular o grau de relação entre os elementos
+            relation_value = op_norma(set_a[i], set_b[j])
             row.append(relation_value)
         relation_matrix.append(row)
     
@@ -43,3 +43,25 @@ def tnorm_min(x, y):
     Retorna: O mínimo entre x e y.
     """
     return min(x, y)
+
+# S-Norma de Soma Probabilística
+def s_norma_soma_probabilistica(x, y):
+    """
+    S-Norma de Soma Probabilística para relação fuzzy.
+    x: Grau de pertinência do primeiro conjunto.
+    y: Grau de pertinência do segundo conjunto.
+    
+    Retorna: Grau de pertinência após aplicar a s-norma de soma probabilística.
+    """
+    return x + y - (x * y)
+
+# S-Norma de Soma Limitada
+def s_norma_soma_limitada(x, y):
+    """
+    S-Norma de Soma Limitada para relação fuzzy.
+    x: Grau de pertinência do primeiro conjunto.
+    y: Grau de pertinência do segundo conjunto.
+    
+    Retorna: Grau de pertinência após aplicar a s-norma de soma limitada.
+    """
+    return min(1, x + y)

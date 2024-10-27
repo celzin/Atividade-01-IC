@@ -1,5 +1,5 @@
 import numpy as np
-from relations import fuzzy_relation_binaria, tnorm_diferenca_limitada, tnorm_min
+from relations import fuzzy_relation_binaria, tnorm_diferenca_limitada, tnorm_min, s_norma_soma_probabilistica, s_norma_soma_limitada
 from utils import plot_comparison_membership
 
 def executar_etapa4():
@@ -8,25 +8,42 @@ def executar_etapa4():
     dominio_idade = np.array([25, 30, 35, 40, 45, 50, 55])
 
     # Graus de pertinência para o conjunto ALTO (Altura)
-    altura_values = [0, 1, 1, 1, 1, 0, 0]  # Pertinência retangular para altura
+    altura_values = [0, 1, 1, 1, 1, 0, 0]
 
     # Graus de pertinência para o conjunto MEIA-IDADE (Idade)
-    idade_values = [0, 1, 1, 1, 1, 0, 0]   # Pertinência retangular para idade
+    idade_values = [0, 1, 1, 1, 1, 0, 0]
 
-    # Plotar os gráficos de pertinência (Altura vs Idade)
+    # Plotar os gráficos de pertinência
     plot_comparison_membership(dominio_altura, altura_values, dominio_idade, idade_values)
 
-    # Calcular a relação fuzzy usando a t-norma de Diferença Limitada
+    # Comparação entre T-Normas
+
+    # 1. Relação fuzzy usando a t-norma de Diferença Limitada
     relation_binaria_diferenca = fuzzy_relation_binaria(tnorm_diferenca_limitada, altura_values, idade_values)
     
-    # Calcular a relação fuzzy usando a t-norma de Interseção Mínima
+    # 2. Relação fuzzy usando a t-norma de Interseção Mínima
     relation_binaria_min = fuzzy_relation_binaria(tnorm_min, altura_values, idade_values)
 
-    # Exibir os resultados das relações fuzzy no terminal
-    print("Relação Binária Fuzzy (Diferença Limitada):")
+    print("Relação Binária Fuzzy (Diferença Limitada - T-norma):")
     for row in relation_binaria_diferenca:
         print(row)
 
-    print("\nRelação Binária Fuzzy (Interseção Mínima):")
+    print("\nRelação Binária Fuzzy (Interseção Mínima - T-norma):")
     for row in relation_binaria_min:
+        print(row)
+
+    # Comparação entre S-Normas
+
+    # 1. Relação fuzzy usando a s-norma de Soma Probabilística
+    relation_binaria_soma_prob = fuzzy_relation_binaria(s_norma_soma_probabilistica, altura_values, idade_values)
+    
+    # 2. Relação fuzzy usando a s-norma de Soma Limitada
+    relation_binaria_soma_limitada = fuzzy_relation_binaria(s_norma_soma_limitada, altura_values, idade_values)
+
+    print("\nRelação Binária Fuzzy (Soma Probabilística - S-norma):")
+    for row in relation_binaria_soma_prob:
+        print(row)
+
+    print("\nRelação Binária Fuzzy (Soma Limitada - S-norma):")
+    for row in relation_binaria_soma_limitada:
         print(row)
