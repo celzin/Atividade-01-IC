@@ -121,3 +121,28 @@ def plot_heatmap(matrix, title):
     plt.xlabel("Conjunto 1 (Altura)")
     plt.ylabel("Conjunto 2 (Idade)")
     plt.show()
+
+def plot_fuzzy_compositions(matrix_max_min, matrix_min_max, matrix_max_prod):
+    """
+    Plota os resultados das três composições fuzzy: Max-Min, Min-Max e Max-Prod.
+    
+    matrix_max_min: Matriz resultante da composição Max-Min.
+    matrix_min_max: Matriz resultante da composição Min-Max.
+    matrix_max_prod: Matriz resultante da composição Max-Prod.
+    """
+    # Definir os títulos e dados para comparação
+    titles = ['Composição Max-Min', 'Composição Min-Max', 'Composição Max-Prod']
+    matrices = [matrix_max_min, matrix_min_max, matrix_max_prod]
+    
+    fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+
+    for ax, title, matrix in zip(axs, titles, matrices):
+        ax.matshow(matrix, cmap='coolwarm', aspect='auto')
+        for (i, j), val in np.ndenumerate(matrix):
+            ax.text(j, i, f'{val:.2f}', ha='center', va='center', color='black')
+        ax.set_title(title)
+        ax.set_xlabel("Conjunto B (Idade)")
+        ax.set_ylabel("Conjunto A (Altura)")
+    
+    plt.tight_layout()
+    plt.show()
