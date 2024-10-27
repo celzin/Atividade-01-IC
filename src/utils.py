@@ -55,3 +55,54 @@ def plot_fuzzification_operations(X, Mis, function_name):
     plt.ylabel('Grau de Pertinência')
     plt.legend()
     plt.show()
+
+def plot_fuzzy_membership(dominio, membership_values, conjunto_nome, x_label):
+    """
+    Plota um gráfico de pertinência fuzzy semelhante ao da imagem fornecida.
+    
+    dominio: O domínio dos valores (ex: altura, idade).
+    membership_values: Valores de pertinência correspondentes ao domínio.
+    conjunto_nome: Nome do conjunto fuzzy (ex: 'ALTO', 'MEIA-IDADE').
+    x_label: Rótulo para o eixo X (ex: 'Altura', 'Idade').
+    """
+    plt.plot(dominio, membership_values, linewidth=2, color='gray')
+    plt.fill_between(dominio, 0, membership_values, color='gray', alpha=0.5)
+    
+    plt.title(f'Conjunto {conjunto_nome}')
+    plt.xlabel(x_label)
+    plt.ylabel('Grau de Pertinência')
+    plt.ylim(0, 1)
+    plt.grid(True)
+    plt.show()
+
+def plot_comparison_membership(dominio_altura, altura_values, dominio_idade, idade_values):
+    """
+    Gera dois gráficos lado a lado: um para 'ALTO' e outro para 'MEIA-IDADE', conforme exemplo da imagem.
+    
+    dominio_altura: Valores de altura.
+    altura_values: Graus de pertinência para altura.
+    dominio_idade: Valores de idade.
+    idade_values: Graus de pertinência para idade.
+    """
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+    # Gráfico para o conjunto ALTO
+    ax1.plot(dominio_altura, altura_values, linewidth=2, color='gray')
+    ax1.fill_between(dominio_altura, 0, altura_values, color='gray', alpha=0.5)
+    ax1.set_title('Conjunto ALTO')
+    ax1.set_xlabel('Altura')
+    ax1.set_ylabel('Grau de Pertinência')
+    ax1.set_ylim(0, 1)
+    ax1.grid(True)
+
+    # Gráfico para o conjunto MEIA-IDADE
+    ax2.plot(dominio_idade, idade_values, linewidth=2, color='gray')
+    ax2.fill_between(dominio_idade, 0, idade_values, color='gray', alpha=0.5)
+    ax2.set_title('Conjunto MEIA-IDADE')
+    ax2.set_xlabel('Idade')
+    ax2.set_ylabel('Grau de Pertinência')
+    ax2.set_ylim(0, 1)
+    ax2.grid(True)
+
+    plt.tight_layout()
+    plt.show()
