@@ -1,5 +1,3 @@
-import numpy as np
-
 # 1. Complemento
 def fuzzy_complement(memberships):
     """
@@ -40,6 +38,7 @@ def fuzzy_tnorm_product(memberships1, memberships2):
     """
     return [mi1 * mi2 for mi1, mi2 in zip(memberships1, memberships2)]
 
+
 # S-Norma: Soma Probabilística
 def fuzzy_snorm_probabilistic(memberships1, memberships2):
     """
@@ -48,14 +47,3 @@ def fuzzy_snorm_probabilistic(memberships1, memberships2):
     Retorna: Lista com o resultado da s-norm probabilística.
     """
     return [mi1 + mi2 - (mi1 * mi2) for mi1, mi2 in zip(memberships1, memberships2)]
-
-
-
-
-
-
-
-
-
-
-
