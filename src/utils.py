@@ -35,13 +35,22 @@ def plot_fuzzification_overlay(X, Mis, function_name):
     plt.legend()
     plt.show()
 
-def plot_fuzzification_operations(X, Mis, function_name):
+def plot_fuzzification_operations(X, Mis, operation_name):
+    # Ajuste da legenda dependendo da operação
+    if operation_name == "Complemento":
+        labels = ["Original", "Complemento"]
+    elif operation_name in ["União", "Interseção", "Produto", "Soma Probabilística"]:
+        labels = [f"Conjunto {i+1}" for i in range(len(Mis)-1)] + [f"{operation_name}"]
+    else:
+        labels = [f"Conjunto {i+1}" for i in range(len(Mis))]
+
+    # Plotar cada conjunto com seu rótulo
     for i, Mi in enumerate(Mis):
-        plt.plot(X, Mi, label=f'Conjunto {i+1}')
-    
-    plt.title(f'Operações Fuzzy - {function_name} (Etapa 3)')
-    plt.xlabel('Valores de Entrada')
-    plt.ylabel('Grau de Pertinência')
+        plt.plot(X, Mi, label=labels[i])
+
+    plt.title(f"Operações Fuzzy - {operation_name}")
+    plt.xlabel("Valores de Entrada")
+    plt.ylabel("Grau de Pertinência")
     plt.legend()
     plt.show()
 
