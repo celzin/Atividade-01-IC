@@ -13,31 +13,36 @@ def executar_etapa3():
     Mi_trapezoidal1 = fuzzify_trapezoidal(dominio, *params_trapezoidal[0])
     Mi_trapezoidal2 = fuzzify_trapezoidal(dominio, *params_trapezoidal[1])
 
+    # Pontos de interesse para análise comparativa
+    pontos_interesse = [0, 25, 50, 75, 100]
+
+    # Função auxiliar para exibir valores de pertinência em pontos de interesse
+    def exibir_valores_operacao(nome_operacao, valores):
+        print(f"\nValores de Pertinência - {nome_operacao}:")
+        for ponto in pontos_interesse:
+            idx = np.abs(dominio - ponto).argmin()  # Encontrar índice mais próximo do ponto
+            print(f"Domínio {ponto}: {valores[idx]:.2f}")
+
     # 1. Complemento
     Mi_complement = fuzzy_complement(Mi_trapezoidal1[0])
-    print("Valores de Pertinência - Complemento:")
-    print([f"{value:.2f}" for value in Mi_complement])
+    exibir_valores_operacao("Complemento", Mi_complement)
     plot_fuzzification_operations(dominio[0], [Mi_trapezoidal1[0], Mi_complement], "Complemento")
 
     # 2. União (Máximo)
     Mi_union = fuzzy_union(Mi_trapezoidal1[0], Mi_trapezoidal2[0])
-    print("\nValores de Pertinência - União:")
-    print([f"{value:.2f}" for value in Mi_union])
+    exibir_valores_operacao("União", Mi_union)
     plot_fuzzification_operations(dominio[0], [Mi_trapezoidal1[0], Mi_trapezoidal2[0], Mi_union], "União")
 
     # 3. Interseção (Mínimo)
     Mi_intersection = fuzzy_intersection(Mi_trapezoidal1[0], Mi_trapezoidal2[0])
-    print("\nValores de Pertinência - Interseção:")
-    print([f"{value:.2f}" for value in Mi_intersection])
+    exibir_valores_operacao("Interseção", Mi_intersection)
     plot_fuzzification_operations(dominio[0], [Mi_trapezoidal1[0], Mi_trapezoidal2[0], Mi_intersection], "Interseção")
 
     # 4. Normas Duais (Produto Algébrico e Soma Probabilística)
     Mi_tnorm = fuzzy_tnorm_product(Mi_trapezoidal1[0], Mi_trapezoidal2[0])
-    print("\nValores de Pertinência - T-Norm Produto:")
-    print([f"{value:.2f}" for value in Mi_tnorm])
+    exibir_valores_operacao("T-Norm Produto", Mi_tnorm)
     plot_fuzzification_operations(dominio[0], [Mi_trapezoidal1[0], Mi_trapezoidal2[0], Mi_tnorm], "Produto")
 
     Mi_snorm = fuzzy_snorm_probabilistic(Mi_trapezoidal1[0], Mi_trapezoidal2[0])
-    print("\nValores de Pertinência - S-Norm Probabilística:")
-    print([f"{value:.2f}" for value in Mi_snorm])
+    exibir_valores_operacao("S-Norm Probabilística", Mi_snorm)
     plot_fuzzification_operations(dominio[0], [Mi_trapezoidal1[0], Mi_trapezoidal2[0], Mi_snorm], "Soma Probabilística")

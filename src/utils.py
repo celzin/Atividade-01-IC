@@ -38,7 +38,7 @@ def plot_fuzzification_overlay(X, Mis, function_name):
 def plot_fuzzification_operations(X, Mis, operation_name):
     # Ajuste da legenda dependendo da operação
     if operation_name == "Complemento":
-        labels = ["Original", "Complemento"]
+        labels = ["Conjunto 1", "Complemento"]
     elif operation_name in ["União", "Interseção", "Produto", "Soma Probabilística"]:
         labels = [f"Conjunto {i+1}" for i in range(len(Mis)-1)] + [f"{operation_name}"]
     else:
