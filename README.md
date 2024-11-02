@@ -1,51 +1,40 @@
 <div align="center" style="display: inline_block">
   <img align="center" alt="VS" src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" />
   <img align="center" alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
-  <!-- <img align="center" alt="C++" src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" /> -->
+  <img align="center" alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
 </div>
 
 # 🗂️​ Estrutura do Repositório
 
-- `src/`: Diretório com os scripts.
-- `imgs/`: Diretório com as imagens utilizadas na documentação.
+- `src/`: Diretório com os scripts Python usados para gerar os gráficos e realizar as análises.
 - `docs/`: Diretório contendo as instruções do trabalho em PDF.
+- `imgs/`: Diretório com as imagens utilizadas na documentação.
 
-# ⚠️ Apresentação do Problema 
-
-### Atividade 01
-
-<div align="justify">
-
-</div>
-
-<!-- # Execução
+# 📝 Resumo
 
 <div align="justify">
-
-Esse programa possui um arquivo `Makefile` que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
-
+Este repositório apresenta o desenvolvimento e a análise de diversas operações e composições fuzzy aplicadas ao estudo de relações fuzzy. As composições exploradas incluem <code>Max-Min</code>, <code>Min-Max</code> e <code>Max-Prod</code>, enquanto as operações fuzzy englobam t-normas e s-normas para diferentes formas de interseção e união fuzzy. Esses métodos são avaliados com base em seu impacto nas relações fuzzy entre variáveis do universo em análise, permitindo uma análise detalhada das interações entre conjuntos fuzzy. O cenário de aplicação envolve conjuntos de altura e idade, com o objetivo de investigar a eficácia de diferentes composições e operações fuzzy. Os resultados destacam as variações que cada método proporciona na representação das relações fuzzy, possibilitando uma análise comparativa das abordagens em termos de flexibilidade e precisão.
 </div>
 
-### Makefile
+# 🔄 Compilação e Execução 
 
-<table align="center">
-  <tr>
-    <th>Comando</th>
-    <th>Função</th>
-  </tr>
-  <tr>
-    <td><code>make clean</code></td>
-    <td>Apaga a última compilação realizada contida na pasta build</td>
-  </tr>
-  <tr>
-    <td><code>make</code></td>
-    <td>Executa a compilação do programa utilizando o gcc, e o resultado vai para a pasta build</td>
-  </tr>
-  <tr>
-    <td><code>make run</code></td>
-    <td>Executa o programa da pasta build após a realização da compilação</td>
-  </tr>
-</table> -->
+<div align="justify">
+Para executar o programa, siga os passos abaixo:
+
+- Abra o terminal no diretório onde os arquivos do projeto estão localizados.
+- Certifique-se de que as bibliotecas `networkx` e `matplotlib` estão instaladas. Se não estiverem instaladas, você pode instalar essas bibliotecas manualmente utilizando o seguinte comando:
+
+```bash
+pip install numpy matplotlib seaborn
+```
+
+- Em seguida, execute o programa com o comando:
+
+```bash
+python main.py
+```
+
+</div>
 
 # 📞 Contato
 
