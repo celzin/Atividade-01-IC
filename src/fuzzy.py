@@ -1,5 +1,4 @@
-import numpy as np
-
+# 1. Triangular
 def triangular_mf(x, a, b, c):
     """
     Função de pertinência triangular.
@@ -16,7 +15,16 @@ def triangular_mf(x, a, b, c):
     else:
         return (c - x) / (c - b)
 
+def fuzzify_triangular(X, a, b, c):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = triangular_mf(X[i][j], a, b, c)
+    return Mi
 
+# 2. Trapezoidal
 def trapezoidal_mf(x, a, b, c, d):
     """
     Função de pertinência trapezoidal.
@@ -32,7 +40,16 @@ def trapezoidal_mf(x, a, b, c, d):
     else:
         return (d - x) / (d - c)
 
+def fuzzify_trapezoidal(X, a, b, c, d):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = trapezoidal_mf(X[i][j], a, b, c, d)
+    return Mi
 
+# 3. Gaussiana
 def gaussian_mf(x, c, sigma):
     """
     Função de pertinência Gaussiana.
@@ -40,9 +57,18 @@ def gaussian_mf(x, c, sigma):
     c: valor central
     sigma: desvio padrão
     """
-    return np.exp(-0.5 * ((x - c) / sigma) ** 2)
+    return pow(2.718281828459045, -0.5 * ((x - c) / sigma) ** 2)
 
+def fuzzify_gaussian(X, c, sigma):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = gaussian_mf(X[i][j], c, sigma)
+    return Mi
 
+# 4. Sigmoidal
 def sigmoidal_mf(x, alpha, c):
     """
     Função de pertinência Sigmoidal.
@@ -50,9 +76,18 @@ def sigmoidal_mf(x, alpha, c):
     alpha: inclinação da curva
     c: ponto central
     """
-    return 1 / (1 + np.exp(-alpha * (x - c)))
+    return 1 / (1 + pow(2.718281828459045, -alpha * (x - c)))
 
+def fuzzify_sigmoidal(X, alpha, c):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = sigmoidal_mf(X[i][j], alpha, c)
+    return Mi
 
+# 5. Sino
 def bell_mf(x, a, b, c):
     """
     Função de pertinência Sino.
@@ -62,7 +97,16 @@ def bell_mf(x, a, b, c):
     """
     return 1 / (1 + abs((x - c) / a) ** (2 * b))
 
+def fuzzify_bell(X, a, b, c):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = bell_mf(X[i][j], a, b, c)
+    return Mi
 
+# 6. Função-S
 def s_shaped_mf(x, a, b):
     """
     Função de pertinência em 'S' (S-shaped).
@@ -79,7 +123,16 @@ def s_shaped_mf(x, a, b):
     else:
         return 1.0
 
+def fuzzify_s_shaped(X, a, b):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = s_shaped_mf(X[i][j], a, b)
+    return Mi
 
+# 7. Função-Z
 def z_shaped_mf(x, a, b):
     """
     Função de pertinência em 'Z' (Z-shaped).
@@ -96,7 +149,16 @@ def z_shaped_mf(x, a, b):
     else:
         return 0.0
 
+def fuzzify_z_shaped(X, a, b):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = z_shaped_mf(X[i][j], a, b)
+    return Mi
 
+# 8. Cauchy
 def cauchy_mf(x, c, gamma):
     """
     Função de pertinência Cauchy.
@@ -106,7 +168,16 @@ def cauchy_mf(x, c, gamma):
     """
     return 1 / (1 + ((x - c) / gamma) ** 2)
 
+def fuzzify_cauchy(X, c, gamma):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = cauchy_mf(X[i][j], c, gamma)
+    return Mi
 
+# 9. Gaussiana Dupla
 def double_gaussian_mf(x, c1, sigma1, c2, sigma2):
     """
     Função de pertinência Gaussiana Dupla.
@@ -114,9 +185,19 @@ def double_gaussian_mf(x, c1, sigma1, c2, sigma2):
     c1, c2: valores centrais das gaussianas
     sigma1, sigma2: desvios padrão das gaussianas
     """
-    return np.exp(-0.5 * ((x - c1) / sigma1) ** 2) + np.exp(-0.5 * ((x - c2) / sigma2) ** 2)
+    return (pow(2.718281828459045, -0.5 * ((x - c1) / sigma1) ** 2) +
+            pow(2.718281828459045, -0.5 * ((x - c2) / sigma2) ** 2))
 
+def fuzzify_double_gaussian(X, c1, sigma1, c2, sigma2):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = double_gaussian_mf(X[i][j], c1, sigma1, c2, sigma2)
+    return Mi
 
+# 10. Linear por Partes
 def linear_piecewise_mf(x, a, b):
     """
     Função Linear por Partes (Linear Piecewise).
@@ -130,7 +211,16 @@ def linear_piecewise_mf(x, a, b):
     else:
         return 1.0
 
+def fuzzify_linear_piecewise(X, a, b):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
+    for i in range(M):
+        for j in range(N):
+            Mi[i][j] = linear_piecewise_mf(X[i][j], a, b)
+    return Mi
 
+# 11. Polinomial
 def polynomial_mf(x, c, n):
     """
     Função Polinomial.
@@ -139,17 +229,11 @@ def polynomial_mf(x, c, n):
     """
     return 1 - (x - c) ** n
 
-
-def fuzzify_data(X, a, b, c):
-    """
-    Função para fuzzificar um conjunto de dados de entrada usando uma função de pertinência triangular.
-    X: Matriz de dados de entrada (M x N)
-    a, b, c: Parâmetros da função triangular
-    Retorna uma matriz de graus de pertinência.
-    """
-    M, N = X.shape
-    Mi = np.zeros((M, N))  # Matriz para armazenar os graus de pertinência
+def fuzzify_polynomial(X, c, n):
+    M = len(X)
+    N = len(X[0])
+    Mi = [[0.0 for _ in range(N)] for _ in range(M)]
     for i in range(M):
         for j in range(N):
-            Mi[i][j] = triangular_mf(X[i][j], a, b, c)
+            Mi[i][j] = polynomial_mf(X[i][j], c, n)
     return Mi
