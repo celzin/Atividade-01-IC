@@ -7,13 +7,13 @@
 # 🗂️​ Estrutura do Repositório
 
 - `src/`: Diretório com os scripts Python usados para gerar os gráficos e realizar as análises.
-- `docs/`: Diretório contendo as instruções do trabalho em PDF.
-- `imgs/`: Diretório com as imagens utilizadas na documentação.
+- `docs/`: Diretório contendo as instruções do trabalho e o Relatório de análise em PDF.
+<!-- - `imgs/`: Diretório com as imagens utilizadas na documentação. -->
 
 # 📝 Resumo
 
 <div align="justify">
-Este repositório apresenta o desenvolvimento e a análise de diversas operações e composições fuzzy aplicadas ao estudo de relações fuzzy. As composições exploradas incluem <code>Max-Min</code>, <code>Min-Max</code> e <code>Max-Prod</code>, enquanto as operações fuzzy englobam t-normas e s-normas para diferentes formas de interseção e união fuzzy. Esses métodos são avaliados com base em seu impacto nas relações fuzzy entre variáveis do universo em análise, permitindo uma análise detalhada das interações entre conjuntos fuzzy. O cenário de aplicação envolve conjuntos de altura e idade, com o objetivo de investigar a eficácia de diferentes composições e operações fuzzy. Os resultados destacam as variações que cada método proporciona na representação das relações fuzzy, possibilitando uma análise comparativa das abordagens em termos de flexibilidade e precisão.
+Este repositório apresenta o desenvolvimento e a análise de diversas operações e composições fuzzy aplicadas ao estudo de relações fuzzy. As implementações exploradas incluem as operações fuzzy (<code>Complemento</code>, <code>União</code>, <code>Interseção</code>, <code>T-Normas</code>, <code>S-Normas</code>) e das composições (<code>Max-Min</code>, <code>Min-Max</code> e <code>Max-Prod</code>). Esses métodos são avaliados com base em seu impacto nas relações fuzzy entre variáveis do universo em análise, permitindo uma análise detalhada das interações entre conjuntos fuzzy. O cenário de aplicação envolve conjuntos de altura e idade, com o objetivo de investigar a eficácia de diferentes composições e operações fuzzy. Os resultados destacam as variações que cada método proporciona na representação das relações fuzzy, possibilitando uma análise comparativa das abordagens em termos de flexibilidade e precisão.
 </div>
 
 # 🔄 Compilação e Execução 
